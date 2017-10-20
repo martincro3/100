@@ -6,11 +6,26 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication1
 {
+    public class Zaposlenik
+    {
+        public string Ime;
+        public string Prezime;
+
+        public void IspisImePrezime()
+        {
+            Console.WriteLine(Ime + " " + Prezime);
+        }
+    }
+
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("JO NIGG");
+            Zaposlenik Marko = new Zaposlenik();
+            Marko.Ime = "Marko";
+            Marko.Prezime = "Marković";
+
+            Marko.IspisImePrezime();
             Console.ReadKey();
         }
     }
