@@ -8,24 +8,46 @@ namespace ConsoleApplication1
 {
     public class Zaposlenik
     {
-        public string Ime;
-        public string Prezime;
+        public string Ime ="Default vrijednost, ";
+        public string Prezime ="Default vrijednost, ";
 
-        public void IspisImePrezime()
+        public virtual void IspisImePrezime()
         {
-            Console.WriteLine(Ime + " " + Prezime);
+            Console.WriteLine(Ime + " " + Prezime + " zaposlenik.");
         }
+    }
+
+    public class PolaVremena : Zaposlenik
+    {
+        public override void IspisImePrezime()
+        {
+            Console.WriteLine(Ime + " " + Prezime + " Pola vremena.");
+        }
+    }
+
+    public class PunoVrijeme : Zaposlenik
+    {
+        public override void IspisImePrezime()
+        {
+            Console.WriteLine(Ime + " " + Prezime + " Puno vrijeme.");
+        }
+
     }
 
     class Program
     {
         static void Main(string[] args)
         {
-            Zaposlenik Marko = new Zaposlenik();
-            Marko.Ime = "Marko";
-            Marko.Prezime = "Marković";
+            Zaposlenik[] zaposlenici = new Zaposlenik[3];
+            zaposlenici[0] = new Zaposlenik();
+            zaposlenici[1] = new PolaVremena();
+            zaposlenici[2] = new PunoVrijeme();
 
-            Marko.IspisImePrezime();
+            foreach ( Zaposlenik z in zaposlenici)
+            {
+                z.IspisImePrezime();
+            }
+
             Console.ReadKey();
         }
     }
