@@ -9,20 +9,21 @@ namespace ConsoleApplication1
     public class Student
     {
         private int _id;
-        private string _name;
 
-        public void SetId(int Id)
+        public int Id
         {
-            if (Id <= 0)
+            set
             {
-                throw new Exception("Students Id cannot be negative");
+                if( value <= 0 )
+                {
+                    throw new Exception("Student ID ne može biti negativan broj");
+                }
+                this._id = Id;
             }
-            this._id = Id;
-        }
-
-        public int GetId()
-        {
-            return this._id;
+            get
+            {
+                return this._id;
+            }
         }
     }
 
@@ -32,9 +33,10 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
             Student S1 = new Student();
-            S1.SetId(01);
+            S1.Id=2;
+            
 
-            Console.WriteLine(" This student id is {0}", S1.GetId());
+            Console.WriteLine(" This student id is {0}", S1.Id);
             
             Console.ReadKey();
         }
