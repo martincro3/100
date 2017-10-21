@@ -6,48 +6,36 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication1
 {
-    public class Zaposlenik
+    public class Student
     {
-        public string Ime ="Default vrijednost, ";
-        public string Prezime ="Default vrijednost, ";
+        private int _id;
+        private string _name;
 
-        public virtual void IspisImePrezime()
+        public void SetId(int Id)
         {
-            Console.WriteLine(Ime + " " + Prezime + " zaposlenik.");
+            if (Id <= 0)
+            {
+                throw new Exception("Students Id cannot be negative");
+            }
+            this._id = Id;
+        }
+
+        public int GetId()
+        {
+            return this._id;
         }
     }
 
-    public class PolaVremena : Zaposlenik
-    {
-        public override void IspisImePrezime()
-        {
-            Console.WriteLine(Ime + " " + Prezime + " Pola vremena.");
-        }
-    }
-
-    public class PunoVrijeme : Zaposlenik
-    {
-        public override void IspisImePrezime()
-        {
-            Console.WriteLine(Ime + " " + Prezime + " Puno vrijeme.");
-        }
-
-    }
 
     class Program
     {
         static void Main(string[] args)
         {
-            Zaposlenik[] zaposlenici = new Zaposlenik[3];
-            zaposlenici[0] = new Zaposlenik();
-            zaposlenici[1] = new PolaVremena();
-            zaposlenici[2] = new PunoVrijeme();
+            Student S1 = new Student();
+            S1.SetId(01);
 
-            foreach ( Zaposlenik z in zaposlenici)
-            {
-                z.IspisImePrezime();
-            }
-
+            Console.WriteLine(" This student id is {0}", S1.GetId());
+            
             Console.ReadKey();
         }
     }
